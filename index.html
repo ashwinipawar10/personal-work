@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Chinmay ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",sans-serif;
+}
+
+/* NORMAL CURSOR */
+body{
+  background:linear-gradient(135deg,#ff4d6d,#ffb3c6);
+  color:white;
+  text-align:center;
+  cursor: default;
+}
+
+.hidden{display:none;}
+
+/* PASSWORD PAGE */
+#lockScreen{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.lock-box{
+  background:#ff1e56;
+  padding:30px;
+  border-radius:20px;
+}
+.lock-box input{
+  padding:10px;
+  border-radius:20px;
+  border:none;
+  margin-top:10px;
+  text-align:center;
+}
+
+/* HEADER */
+header{padding:30px;}
+#typewriter{font-size:1.3rem;margin-top:10px;}
+
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  padding:20px;
+}
+.card{
+  background:#ff1e56;
+  border-radius:15px;
+  padding:10px;
+  transition:.3s;
+}
+.card:hover{transform:scale(1.05);}
+.card img{
+  width:100%;
+  max-height:280px;
+  object-fit:contain;
+  background:white;
+  border-radius:10px;
+}
+.card p{padding:10px;font-style:italic;font-size:.9rem;}
+
+/* QUESTIONS */
+.questions,.quiz{
+  background:rgba(255,255,255,0.15);
+  margin:20px;
+  padding:20px;
+  border-radius:15px;
+}
+.qa input{
+  width:90%;
+  padding:8px;
+  border-radius:20px;
+  border:none;
+  margin:5px;
+}
+
+/* BUTTON */
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  background:white;
+  color:#ff1e56;
+  margin-top:10px;
+}
+button:hover{transform:scale(1.1);}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.popup-box{
+  background:#ff1e56;
+  padding:30px;
+  border-radius:20px;
+}
+
+/* HEART FLOAT */
+.heart{
+  position:fixed;
+  animation:float 5s linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-100vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD PAGE -->
+<div id="lockScreen">
+  <div class="lock-box">
+    <h2>🔐 Enter Love Password</h2>
+    <input type="password" id="password" placeholder="Enter password"><br><br>
+    <button onclick="checkPassword()">Unlock ❤️</button>
+  </div>
+</div>
+
+<!-- MAIN SITE -->
+<div id="mainSite" class="hidden">
+
+<audio autoplay loop>
+  <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h2>Chinmay 💖</h2>
+    <p>Will you be my Valentine?</p><br>
+    <button onclick="yesLove()">Yes ❤️</button>
+    <button onclick="noLove()">No 🙈</button>
+  </div>
+</div>
+
+<header>
+  <h1>Happy Valentine’s Day Chinmay ❤️</h1>
+  <div id="typewriter"></div>
+  <p>From your forever, Ashwini 💕</p>
+</header>
+
+<section class="gallery">
+  <div class="card">
+    <img src="photo1.jpg">
+    <p>Every picture of you is my favorite love story.</p>
+  </div>
+  <div class="card">
+    <img src="photo2.jpg">
+    <p>This smile is the reason my heart beats faster.</p>
+  </div>
+  <div class="card">
+    <img src="photo3.jpg">
+    <p>My forever looks like you.</p>
+  </div>
+</section>
+
+<section class="questions">
+<h2>Answer My Questions 💌</h2>
+<div class="qa">When did you realize you loved me?<br><input></div>
+<div class="qa">Your favorite memory with me?<br><input></div>
+<div class="qa">What song reminds you of us?<br><input></div>
+<button onclick="showAnswers()">Submit Answers 💖</button>
+</section>
+
+<section class="quiz">
+<h2>Love Quiz 💕</h2>
+<p>1. Who do I love the most?</p>
+<input type="radio" name="q1"> Pizza 🍕<br>
+<input type="radio" name="q1"> You 😘<br><br>
+
+<p>2. Our dream date?</p>
+<input type="radio" name="q2"> Romantic night 🎬<br>
+<input type="radio" name="q2"> Long drive + food ❤️<br><br>
+
+<p>3. Where should we go on our dream date?</p>
+<input type="radio" name="q3"> Maldives ❤️<br>
+<input type="radio" name="q3"> Vietnam ❤️<br><br>
+
+<button onclick="quizResult()">Submit Quiz 💝</button>
+</section>
+
+<footer>Made with ❤️ by Ashwini for Chinmay</footer>
+</div>
+
+<script>
+/* PASSWORD */
+function checkPassword(){
+  const pass="22102004";
+  if(document.getElementById("password").value===pass){
+    document.getElementById("lockScreen").style.display="none";
+    document.getElementById("mainSite").classList.remove("hidden");
+  }else{
+    alert("Wrong password 😜");
+  }
+}
+
+/* TYPEWRITER */
+const text="I Love You Chinmay 💖";
+let i=0;
+function typeWriter(){
+  if(i<text.length){
+    document.getElementById("typewriter").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(typeWriter,120);
+  }
+}
+typeWriter();
+
+/* POPUP */
+function yesLove(){
+  alert("Yayyy I love you forever 💕");
+  document.getElementById("popup").style.display="none";
+}
+function noLove(){alert("Wrong answer 😜");}
+
+/* ANSWERS */
+function showAnswers(){
+  alert("I will read your answers later 💖");
+}
+
+/* QUIZ */
+function quizResult(){
+  alert("You passed the love quiz 😍💝");
+}
+
+/* FLOATING HEARTS */
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),5000);
+},500);
+</script>
+
+</body>
+</html>
